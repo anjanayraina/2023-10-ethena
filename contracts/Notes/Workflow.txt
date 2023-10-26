@@ -1,0 +1,6 @@
+Ethena is a platform that allows users to mint USDe with stETH and open an equivalent short ETH perps position on perps exchanges. Here is how the process works:
+
+1) Users mint USDe with stETH, which yields 3-4% annualized.
+2) Ethena opens an equivalent short ETH perps position on perps exchanges, which yields 6-8%.
+3) The combined long and short position daily yield is sent to an insurance fund.
+4) The insurance fund sends the yield to the staking contract every 8 hours
