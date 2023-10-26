@@ -1,0 +1,3 @@
+1) In the USDe contract there might be a way for the owner to renounce their ownership as the renounce owner ship function is ungaurded 
+
+2) In the StakedUSDe contract , there might be a way for some other roles to blacklist the admin of the conract. There might be some form of precedence that the contract must follow.

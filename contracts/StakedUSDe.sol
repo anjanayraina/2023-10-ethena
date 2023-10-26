@@ -140,6 +140,7 @@ contract StakedUSDe is SingleAdminAccessControl, ReentrancyGuard, ERC20Permit, E
    * @param amount The amount of tokens to be rescued.
    * @param to Where to send rescued tokens
    */
+   // @audit NC incorrect doc
   function rescueTokens(address token, uint256 amount, address to) external onlyRole(DEFAULT_ADMIN_ROLE) {
     if (address(token) == asset()) revert InvalidToken();
     IERC20(token).safeTransfer(to, amount);
@@ -191,6 +192,7 @@ contract StakedUSDe is SingleAdminAccessControl, ReentrancyGuard, ERC20Permit, E
   }
 
   /* ------------- INTERNAL ------------- */
+// @audit what is a donation attack ?
 
   /// @notice ensures a small non-zero amount of shares does not remain, exposing to donation attack
   function _checkMinShares() internal view {
