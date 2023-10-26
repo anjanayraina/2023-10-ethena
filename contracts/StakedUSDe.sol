@@ -104,6 +104,9 @@ contract StakedUSDe is SingleAdminAccessControl, ReentrancyGuard, ERC20Permit, E
    * @param target The address to blacklist.
    * @param isFullBlacklisting Soft or full blacklisting level.
    */
+
+  // @audit NC incorrect doc , the BLACKLIST_MANAGER_ROLE must be able to blacklist but its written that the owner must be able to blacklist 
+  // @audit Med can the blacklistmanager role remove admin and blacklist them ?  
   function addToBlacklist(address target, bool isFullBlacklisting)
     external
     onlyRole(BLACKLIST_MANAGER_ROLE)
@@ -118,6 +121,7 @@ contract StakedUSDe is SingleAdminAccessControl, ReentrancyGuard, ERC20Permit, E
    * @param target The address to un-blacklist.
    * @param isFullBlacklisting Soft or full blacklisting level.
    */
+  // @audit NC incorrect doc , the BLACKLIST_MANAGER_ROLE must be able to blacklist but its written that the owner must be able to blacklist 
   function removeFromBlacklist(address target, bool isFullBlacklisting)
     external
     onlyRole(BLACKLIST_MANAGER_ROLE)
