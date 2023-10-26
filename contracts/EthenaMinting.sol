@@ -124,11 +124,11 @@ contract EthenaMinting is IEthenaMinting, SingleAdminAccessControl, ReentrancyGu
     _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
 
     for (uint256 i = 0; i < _assets.length; i++) {
-      addSupportedAsset(_assets[i]);
+      addSupportedAsset(_assets[i]); //  @audit LR this is protected by DEFAULT_ADMIN_ROLE , this cant be called from within the contract 
     }
 
     for (uint256 j = 0; j < _custodians.length; j++) {
-      addCustodianAddress(_custodians[j]);
+      addCustodianAddress(_custodians[j]); //  @audit LR this is protected by DEFAULT_ADMIN_ROLE , this cant be called from within the contract 
     }
 
     // Set the max mint/redeem limits per block
@@ -225,6 +225,7 @@ contract EthenaMinting is IEthenaMinting, SingleAdminAccessControl, ReentrancyGu
     _setMaxRedeemPerBlock(_maxRedeemPerBlock);
   }
 
+  // @audit this implements the pausability in the contract 
   /// @notice Disables the mint and redeem
   function disableMintRedeem() external onlyRole(GATEKEEPER_ROLE) {
     _setMaxMintPerBlock(0);

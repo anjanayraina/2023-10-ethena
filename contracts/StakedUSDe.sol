@@ -86,6 +86,7 @@ contract StakedUSDe is SingleAdminAccessControl, ReentrancyGuard, ERC20Permit, E
    * @notice Allows the owner to transfer rewards from the controller contract into this contract.
    * @param amount The amount of rewards to transfer.
    */
+  // @audit NC incorrect documentation , the address with the rewarder role is able to transfer in the rewards 
   function transferInRewards(uint256 amount) external nonReentrant onlyRole(REWARDER_ROLE) notZero(amount) {
     if (getUnvestedAmount() > 0) revert StillVesting();
     uint256 newVestingAmount = amount + getUnvestedAmount();
