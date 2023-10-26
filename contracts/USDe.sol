@@ -12,6 +12,7 @@ import "./interfaces/IUSDeDefinitions.sol";
  * @notice Stable Coin Contract
  * @dev Only a single approved minter can mint new tokens
  */
+// @audit transferOwnership has not been overrodded in the contract 
 contract USDe is Ownable2Step, ERC20Burnable, ERC20Permit, IUSDeDefinitions {
   address public minter;
 
@@ -29,7 +30,6 @@ contract USDe is Ownable2Step, ERC20Burnable, ERC20Permit, IUSDeDefinitions {
     if (msg.sender != minter) revert OnlyMinter();
     _mint(to, amount);
   }
-
   function renounceOwnership() public view override onlyOwner {
     revert CantRenounceOwnership();
   }
