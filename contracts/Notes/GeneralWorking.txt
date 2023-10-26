@@ -1,0 +1,10 @@
+Ethena is a platform that provides derivative infrastructure to transform Ethereum into the first crypto-native yield-bearing stablecoin, USDe, which is not reliant on the banking system
+
+Ethena provides a request for quotation (RFQ) of how much USDe can be minted for a stETH amount.
+If the user agrees to the price, the user signs the EIP712 signature and submits it to Ethena.
+stETH is traded for newly minted USDe at the rate specified by Ethena's RFQ and user's signature.
+The stETH is then sent to custodians and delegated to perps exchange, where a USD amount of ETH perps equal to the USDe minted is shorted, creating a delta-neutral position
+1
+
+EIP712 is a signing mechanism where you dont actually use metamask to send the transaction instead its another system of signing transactions
+Ethena then sends the transction into the mempool on your behalf if its approved by the minters 
