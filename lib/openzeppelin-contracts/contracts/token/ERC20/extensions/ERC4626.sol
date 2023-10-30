@@ -196,7 +196,7 @@ abstract contract ERC4626 is ERC20, IERC4626 {
     /**
      * @dev Internal conversion function (from assets to shares) with support for rounding direction.
      */
-    // @audit this is succesptiable to inflation attack 
+    // @audit M-01 this is succesptiable to inflation attack 
     function _convertToShares(uint256 assets, Math.Rounding rounding) internal view virtual returns (uint256) {
         return assets.mulDiv(totalSupply() + 10 ** _decimalsOffset(), totalAssets() + 1, rounding);
     }

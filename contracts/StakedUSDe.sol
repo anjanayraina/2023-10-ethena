@@ -107,6 +107,7 @@ contract StakedUSDe is SingleAdminAccessControl, ReentrancyGuard, ERC20Permit, E
 
   // @audit NC incorrect doc , the BLACKLIST_MANAGER_ROLE must be able to blacklist but its written that the owner must be able to blacklist 
   // @audit Med can the blacklistmanager role remove admin and blacklist them ?  
+  // @audit Med In the docs its written that the DEFAULT_ADMIN_ROLE  is the most powerful role meaning there is precedence of roles , but this function has no gaurd of protecting the DEFAULT_ADMIN_ROLE from getting blacklisted 
   function addToBlacklist(address target, bool isFullBlacklisting)
     external
     onlyRole(BLACKLIST_MANAGER_ROLE)
